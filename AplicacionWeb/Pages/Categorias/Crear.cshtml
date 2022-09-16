@@ -1,0 +1,43 @@
+﻿@page
+@model AplicacionWeb.Pages.Categorias.CrearModel
+@{
+}
+<div class="card">
+	<div class="crad-header">
+		<h2 class="text-info">Crear una nueva categoria</h2>
+
+	</div>
+	<div class="card-body">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-capitalize">
+
+			</div>
+			<div class="container" style="padding:30px">
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-2">
+							<label asp-for="Categoria.Nombre"></label>
+						</div>
+						<div class="col-sm-6">
+							<input asp-for="Categoria.Nombre" class="form-control" placeholder="Ingrese el nombre" />
+						</div>
+						<span asp-validation-for="Categoria.Nombre" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-2 offset-sm-2">
+							<input type="submit" value="Crear" class="btn btn-primary form-control" />
+
+						</div>
+						<div class="col-sm-4">
+							<a asp-page="Index" class="btn btn-success form-control">Volver a lista</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>

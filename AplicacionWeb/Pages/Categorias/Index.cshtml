@@ -1,0 +1,94 @@
+﻿@page
+@model AplicacionWeb.Pages.Categorias.IndexModel
+@{
+	ViewData["Title"] = "Lista de las categorias";
+}
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-sm-8">
+				<h2 class="text-info">Lista de categorias creadas</h2>
+			</div>
+			<div class="col-sm-4">
+				<a asp-page="Crear" class="btn btn-primary">Crear nueva categoria</a>
+			</div>
+		</div>
+	</div>
+</div>
+	
+<div class="card-body">
+	@if (Model.Categorias.Count() > 0)
+	{
+		<br />
+		<table class="table table-striped border">
+			<tr>
+				<th>@Html.DisplayNameFor(m=>m.Categorias.First().Id)</th>
+				<th>@Html.DisplayNameFor(m=>m.Categorias.First().Nombre)</th>
+				<th>@Html.DisplayNameFor(m=>m.Categorias.First().FechaCreacion)</th>
+				<th>Acciones</th>
+			</tr>
+			@foreach (var item in Model.Categorias)
+			{
+				<tr>
+					<td>@Html.DisplayFor(m=>item.Id)</td>
+					<td>@Html.DisplayFor(m=>item.Nombre)</td>
+					<td>@Html.DisplayFor(m=>item.FechaCreacion)</td>
+				</tr>
+			}
+		</table>
+	}
+	else
+	{
+		<p>No hay categorias disponibles</p>
+	}
+</div>
+@foreach (var item in Model.Categorias)
+{
+	<tr>
+		<td>@Html.DisplayFor(m=>item.Id)</td>
+		<td>@Html.DisplayFor(m=>item.Nombre)</td>
+		<td>@Html.DisplayFor(m=>item.FechaCreacion)</td>
+		<td>
+			<a asp-route-id="@item.Id" asp-page="Editar" class="btn btn-success btn-sm">Editar</a>
+			<button asp-page-handler="Borrar" asp-route-id="@item.Id"
+				onclick="return confirm('Esta seguro que quiere borrar la categoria?')"
+				class="btn btn-danger btn-sm">
+				Borrar
+			</button>
+		</td>
+	</tr>
+}
+<div class="card-body">
+	<form method="post">
+		@if(Model.Categorias.Count()>0)
+		{
+			<br/>
+			<table class="table table-striped border">
+				<tr>
+					<th>@Html.DisplayNameFor(m=>m.Categorias.First().Id)</th>
+					<th>@Html.DisplayNameFor(m=>m.Categorias.First().Nombre)</th>
+					<th>@Html.DisplayNameFor(m=>m.Categorias.First().FechaCreacion)</th>
+					<th>Acciones</th>		
+				</tr>
+				@foreach(var item in Model.Categorias)
+				{
+					<tr>
+						<td>@Html.DisplayFor(m=>item.Id)</td>
+						<td>@Html.DisplayFor(m=>item.Nombre)</td>
+						<td>@Html.DisplayFor(m=>item.FechaCreacion)</td>
+						<td>
+							<a asp-route-id="@item.Id" asp-page="Editar" class="btn btn-sucess btn-sm">Editar</a>
+							<button asp-page-handler="Borrar" asp-route-id="@item.Id"
+							onclick="return confirm('Esta seguro que quiere borrar la Categoria?')"
+							class="btn btn-danger btn-sm">Borrar</button>
+						</td>
+					</tr>
+				}
+			</table>
+		}
+		else
+		{
+			<p>No hay categorias disponibles</p>
+		}
+	</form>
+</div>

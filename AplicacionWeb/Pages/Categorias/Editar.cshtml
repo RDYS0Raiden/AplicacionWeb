@@ -1,0 +1,50 @@
+﻿@page
+@model AplicacionWeb.Pages.Categorias.EditarModel
+@{
+	ViewData["Title"]="Editar categoria";
+}
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-info">Editar categoria</h2>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Categoria.Id"/>
+            <div class="container" style="padding:30px">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label asp-for="Categoria.Nombre"></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input asp-for="Categoria.Nombre" class="form-control"/>
+                        </div>
+                        <span asp-validation-for="Categoria.Nombre"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label asp-for="Categoria.FechaCreacion"></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input asp-for="Categoria.FechaCreacion" class="form-control"/>
+                        </div>
+                        <span asp-validation-for="Categoria.FechaCreacion"></span>
+                    </div>
+                </div>
+                <div class="form-group pt-2">
+                    <div class="row">
+                        <div class="col-sm-2 offset-sm-2 pt-1">
+                            <input type="submit" value="Editar" class="btn btn-primary form-control"/>
+                        </div>
+                        <div class="col-sm-4 pt-1">
+                            <a asp-page="Index" class="btn btn-success form-control">Volver a lista</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
